@@ -113,6 +113,7 @@ word_setup(guess_word)
 draw_pole()
 
 guess_count = 0
+correct_count = 0
 tracker = []
 while(guess_count < 6):
     guess = win.textinput("Letter Guess","Please enter your letter: ")
@@ -127,6 +128,7 @@ while(guess_count < 6):
     for i in range(len(actual_word)):
         if guess == actual_word[i]:
             guess_word[i] = guess
+            correct_count += 1
             found = True
     
     if not found:
@@ -135,7 +137,7 @@ while(guess_count < 6):
     
     word_setup(guess_word)
     
-    if "_" not in guess_word:
+    if correct_count == n:
         turtle3.clear()
         #Got from here: https://pixabay.com/photos/win-word-scrabble-letters-wooden-1820037/
         win.register_shape("winner.gif")
